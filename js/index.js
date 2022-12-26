@@ -491,8 +491,8 @@ submit.addEventListener("click", async function () {
     for (var i = 0; i < selectedLektionen.length; i++) {
       selectedLektionen[i] = selectedLektionen[i] + 1;
       temp += `
-      <div class="col-md-2 col-3 bg-L${selectedLektionen[i]} innerShadow rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center my-2 py-2 me-2">
-          <span class='px-2 text-light textShadow'>Lek ${selectedLektionen[i]}</span>
+      <div class="col-md-2 col-4 bg-L${selectedLektionen[i]} innerShadow rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center my-2 py-2 me-2">
+          <span class='px-2 text-light text-center textShadow'>Lek ${selectedLektionen[i]}</span>
       </div>
       `;
     }
