@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar position-fixed top-0 start-0 container-fluid navbar-expand-lg bg-black bg-opacity-100 z-ind50">
+        <div class="container">
+            <a class="fs-4 fw-bold text-light navbar-brand textShadow ps-4" href="index.html">Deutsch-Wort </a>
+            <button class="navbar-toggler dd" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class=""><i class="fa-solid fa-bars fs-2 text-light"></i></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="search.html">Search</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="download.html">Download</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="pageContainer position-relative container-fluid mt-5">
+
+        <div class="bgPicCont w-100 h-100  position-absolute"></div>
+        <div class="bgPicBlack w-100 h-100  position-absolute"></div>
+        <div class=" my-5 z-ind30 container d-flex flex-column justify-content-center  align-items-center">
+            <h4 class="text-light text-center textShadow">1-(If you add new words) Don't forget to change the
+                <span class="text-danger">COUNTER</span> (number of
+                words) at <span class="text-danger">cell A1</span> = num of Execel rows-1.
+            </h4>
+            <img class="w-75 my-3" src="images/excelEx.png" alt="">
+            <h4 class="text-light text-center textShadow">2-You <span class="text-danger">MUST</span> write <span
+                    class="text-danger">"Lek#"</span> # =number from 1:12
+            </h4>
+            <img class="w-75 my-3" src="images/excelEx1.png" alt="">
+            <h4 class="text-light text-center textShadow">3-Use the same file name <span
+                    class="text-danger">"words.xlsx"</span>.
+            </h4>
+
+            <h4 class="text-light text-center textShadow">4-Add new file to the same folder.</h4>
+            <img class="w-75 my-3" src="images/words.png" alt="">
+            <button id="button-a"
+                class="myBtn1 rounded-3 border-0 text-center text-light d-flex justify-content-center align-items-center fw-bold fs-5 z-ind30 my-3  px-5 py-2 myshadow ">Download
+                Excel File</button>
+
+        </div>
+
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/jquery-3.6.2.min.js"></script>
+    <script src="js/download.js"></script>
+</body>
+
+</html>
