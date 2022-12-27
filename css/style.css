@@ -209,3 +209,11 @@ input::placeholder {
   transform: rotate(-90deg) translatey(-45px);
   padding-bottom: 10px;
 }
+
+.bgg {
+  background-color: aqua !important;
+}
+
+.toastE {
+  display: block !important;
+}
