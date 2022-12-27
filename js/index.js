@@ -748,7 +748,7 @@ function showMyWordsCard(lang) {
                   <div
                       class="fs-4 py-2 textShadow text-light fw-semibold text-center w-100 border-bottom border-light wrap">
                       ${myWords[i].Du_example}</div>
-                  <button style="pointer-events: all;" onclick="removeWordFromMyWords(${i})"  class="btn btn-danger my-2 text-light textShadow fw-bolder onlyShadow z-ind30">احذفها من القائمة</button>
+                  <button style="pointer-events: all;" onclick="removeWordFromMyWords(${i})"  class=" btn btn-danger my-2 text-light textShadow fw-bolder onlyShadow z-ind30">احذفها من القائمة</button>
               </div>
           </div>
       </div>
@@ -784,7 +784,7 @@ function showMyWordsCard(lang) {
                 <div
                     class="fs-4 py-2 textShadow text-light fw-semibold text-center w-100 border-bottom border-light wrap">
                     ${myWords[i].Ar_example}</div>
-                <button style="pointer-events: all;" onclick="removeWordFromMyWords(${i})"  class="btn btn-danger my-2 text-light textShadow fw-bolder onlyShadow z-ind30">احذفها من القائمة</button>
+                <button style="pointer-events: all;" onclick="removeWordFromMyWords(${i})"  class=" btn btn-danger my-2 text-light textShadow fw-bolder onlyShadow z-ind30">احذفها من القائمة</button>
             </div>
         </div>
     </div>
@@ -806,9 +806,7 @@ async function arabicSequence() {
   setFlipFuncToCard();
 }
 
-function setWordToMyWords(f, s) {
-  // var arabicWord = false;
-  // var duetschWord = false;
+async function setWordToMyWords(f, s) {
   for (var i = 0; i < myWords.length; i++) {
     if (myWords[i].Du_word == finalWordArr[f][s].Du_word) {
       // console.log(myWords[i].Du_word);
@@ -818,6 +816,13 @@ function setWordToMyWords(f, s) {
         // console.log(finalWordArr[f][s].Ar_word);
         if (myWords[i].Lek == finalWordArr[f][s].Lek) {
           console.log("Added before");
+          // to make the user know the word has been added before
+          var toast3 = document.getElementById("liveToast3");
+          toast3.classList.add("toastE");
+
+          setTimeout(() => {
+            toast3.classList.remove("toastE");
+          }, 2000);
           return;
         }
       }
@@ -827,12 +832,24 @@ function setWordToMyWords(f, s) {
   localStorage.setItem("myWords", JSON.stringify(myWords));
   console.log("Added");
 
-  // console.log(myWords);
+  // to make the user know the word has been added
+  var toast1 = document.getElementById("liveToast1");
+  toast1.classList.add("toastE");
+
+  setTimeout(() => {
+    toast1.classList.remove("toastE");
+  }, 2000);
 }
 
 async function removeWordFromMyWords(i) {
   await myWords.splice(i, 1);
   await localStorage.setItem("myWords", JSON.stringify(myWords));
+  // to make the user know the word has been removed
+  var toast2 = document.getElementById("liveToast2");
+  toast2.classList.add("toastE");
+  setTimeout(() => {
+    toast2.classList.remove("toastE");
+  }, 2000);
   // reshow cards
   await showMyWordsCard(myWordsCardlang);
   await setCardsize();

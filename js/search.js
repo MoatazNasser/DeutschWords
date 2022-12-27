@@ -322,6 +322,14 @@ function removeRow(i) {
 
   // reshow the table
   displayTableForSortedWords();
+
+  // to make the user know the word has been added
+  var toast2 = document.getElementById("liveToast2");
+  toast2.classList.add("toastE");
+
+  setTimeout(() => {
+    toast2.classList.remove("toastE");
+  }, 2000);
 }
 
 function displayTableForSortedWords() {
