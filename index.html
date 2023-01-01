@@ -33,10 +33,12 @@
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
-                            aria-current="page" href="download.html">Download</a>
+                            aria-current="page" href="download.html">Download Excel File</a>
                     </li>
-
-
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="setFile.html">Set Excel File</a>
+                    </li>
                 </ul>
 
             </div>
@@ -50,12 +52,74 @@
 
         <div class="py-5 container-fluid px-4 z-ind5">
             <div class="container bg-danger bg-opacity-50 rounded-4 mb-4">
+                <div id="redirect" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have to select file first.
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in 5
+                            Seconds</h3>
+                    </div>
+                </div>
+                <div id="redirect1" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have entered a number of
+                            Lektionen less than the largest number of lektion in your File
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">Ex: you have entered 15 lek
+                            but the gretest num is 20 (lek20) in your file
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in
+                            10
+                            Seconds</h3>
+                    </div>
+                </div>
                 <div id="lekColo" class="d-none container pt-3">
                     <div id="lekColorDiv" class="row d-flex justify-content-center pb-3 border-bottom">
                         <!-- here colors Guide -->
                     </div>
                 </div>
-                <div id="userOptions" class="row py-2 d-flex justify-content-center">
+                <div id="selectLekCount" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">Wie viele Lektionen möchten
+                            Sie?
+                        </h2>
+                        <input id="inputLekCount" placeholder="Lektionen Anzahl ..."
+                            class="w-100 fs-4 fw-bold text-light rounded-3 py-1 ps-4 border-0" type="number">
+                        <div
+                            class=" my-4 position-relative w-25 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                            <div id="submitLekCount" class=" w-100 h-100 rounded-3 position-absolute top-0 start-0">
+                            </div>
+                            <span class='textShadow text-light'>Submit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="selectLekCount" class="d-none row py-2 d-flex justify-content-center">
+
+                    <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">Read file From:
+                    </h2>
+
+                    <div
+                        class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Upload File</span>
+                    </div>
+
+                    <div
+                        class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Google Sheet</span>
+                    </div>
+
+                    <div
+                        class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>local File</span>
+                    </div>
+
+                </div>
+
+                <div id="userOptions" class=" row py-2 d-flex justify-content-center">
                     <!-- add lang options Btns here -->
                 </div>
                 <div id="userLektion" class="d-none row py-2 d-flex justify-content-center">
@@ -285,6 +349,7 @@
     <script src="js/FileSaver.min.js"></script>
     <script src="js/jquery-3.6.2.min.js"></script>
     <script src="js/index.js"></script>
+    <!-- <script type="module" src="js/setFile.js"></script> -->
 </body>
 
 </html>

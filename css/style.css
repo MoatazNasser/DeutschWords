@@ -123,41 +123,60 @@
 .innerShadow {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
-.bg-L1 {
+.bg-L1,
+.bg-L13 {
   background-color: rgba(236, 88, 88, 0.7);
   /* opacity: 0.5; */
 }
-.bg-L2 {
+.bg-L2,
+.bg-L13,
+.bg-L24 {
   background-color: rgba(246, 169, 52, 0.7);
 }
-.bg-L3 {
+.bg-L3,
+.bg-L14,
+.bg-L25 {
   background-color: rgb(136, 137, 130, 0.7);
 }
-.bg-L4 {
+.bg-L4,
+.bg-L15,
+.bg-L26 {
   background-color: rgb(93, 163, 32, 0.7);
 }
-.bg-L5 {
+.bg-L5,
+.bg-L16,
+.bg-L27 {
   background-color: rgb(43, 226, 186, 0.7);
 }
-.bg-L6 {
+.bg-L6,
+.bg-L17,
+.bg-L28 {
   background-color: rgba(0, 87, 142, 0.7);
 }
-.bg-L7 {
+.bg-L7,
+.bg-L18,
+.bg-L29 {
   background-color: rgba(51, 87, 231, 0.7);
 }
-.bg-L8 {
+.bg-L8,
+.bg-L19,
+.bg-L30 {
   background-color: rgb(137, 43, 226, 0.7);
 }
-.bg-L9 {
+.bg-L9,
+.bg-L20 {
   background-color: rgb(226, 43, 147, 0.7);
 }
-.bg-L10 {
+.bg-L10,
+.bg-L21 {
   background-color: rgb(138, 66, 8, 0.7);
 }
-.bg-L11 {
+.bg-L11,
+.bg-L22 {
   background-color: rgb(15, 125, 117, 0.7);
 }
-.bg-L12 {
+.bg-L12,
+.bg-L23 {
   background-color: rgba(115, 115, 18, 0.7);
 }
 

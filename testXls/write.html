@@ -1,0 +1,68 @@
+<html>
+
+<head>
+
+    <script lang="javascript" src="js/xlsx.full.min.js"></script>
+    <script lang="javascript" src="js/FileSaver.min.js"></script>
+    <script lang="javascript" src="js/jquery-3.6.2.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="navbar"><span>Red Stapler - SheetJS </span></div>
+    <div id="wrapper">
+
+        <button id="button-a">Create Excel</button>
+
+    </div>
+    <script>
+
+        var ws_data = [['Lek1', 'Hund', 'Ich spiel mit meinem Hund',
+            'كلب', 'انا العب مع الكلب'], ['Lek2', 'Katze', 'Ich spiel mit meiner Katze',
+            'كلب', 'انا العب مع الكلب']];
+
+
+        writeMyXlsxFile(ws_data);
+        function writeMyXlsxFile(ws_data) {
+            var wb = XLSX.utils.book_new();
+            wb.Props = {
+                Title: "Deutsch Wörter",
+                Subject: "Deutsch Kurs",
+                Author: "Moataz Nasser",
+                CreatedDate: new Date(2020, 11, 11)
+            };
+
+            wb.SheetNames.push("Sheet1");
+
+            // add num of words(arraies) to the file on first cell A1
+            // reading the file depending on this num
+            var arrLength = [`${ws_data.length}`];
+            ws_data.unshift(arrLength);
+            // console.log(ws_data.length)
+            // console.log(ws_data)
+            var ws = XLSX.utils.aoa_to_sheet(ws_data);
+            wb.Sheets["Sheet1"] = ws;
+
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+            function s2ab(s) {
+
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+
+            }
+            // catch Button to fire function
+            $("#button-a").click(function () {
+                saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'Deutsch_Wort.xlsx');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

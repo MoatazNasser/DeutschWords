@@ -34,7 +34,11 @@
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
-                            aria-current="page" href="download.html">Download</a>
+                            aria-current="page" href="download.html">Download Excel File</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="setFile.html">Set Excel File</a>
                     </li>
 
 
@@ -50,70 +54,96 @@
         <div class="bgPicCont w-100 h-100  position-absolute"></div>
         <div class="bgPicBlack w-100 h-100  position-absolute"></div>
         <!-- <button  class="btn btn-danger z-ind30">dfsfs</button> -->
-        <div id="fullScreenBtn" class="hideBtn position-fixed text-center ">Full Screen</div>
-        <div id="optionsBox1" class="mt-5 container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
-            <div class="row  d-flex justify-content-center">
-                <div id="lekColo" class=" container pt-3">
-                    <div id="lekColorDiv" class=" row d-flex justify-content-center pb-3 border-bottom">
-                        <!-- here colors Guide -->
+        <div id="redirectContainer" class="d-none py-5 container-fluid px-4 z-ind5">
+            <div class=" container bg-danger bg-opacity-50 rounded-4 mb-4">
+                <div id="redirect" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have to select file first.
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in 5
+                            Seconds</h3>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div id="showAll"
-                        class=" col-md-3  mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center px-3  py-2   myshadow">
-                        All Words</div>
-                    <div id="printBtn"
-                        class=" col-md-2 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
-                        Print</div>
-                    <div id="storedWords"
-                        class=" col-md-3 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
-                        Stored Words</div>
+                <div id="redirect1" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have entered a number of
+                            Lektionen less than the largest number of lektion in your File
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">Ex: you have entered 15 lek
+                            but the gretest num is 20 (lek20) in your file
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in
+                            10
+                            Seconds</h3>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="showAllOptions"
-            class="d-none mt-y mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow z-ind30">
-            Show Search Options</div>
-        <div id="optionsBox2" class="container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
-            <div class="row d-flex justify-content-center">
+        <div id="SearchPageContainer" class="container-fluid z-ind30">
+            <div id="fullScreenBtn" class="hideBtn position-fixed text-center ">Full Screen</div>
+            <div id="optionsBox1" class="mt-5 container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
+                <div class="row  d-flex justify-content-center">
+                    <div id="lekColo" class=" container pt-3">
+                        <div id="lekColorDiv" class=" row d-flex justify-content-center pb-3 border-bottom">
+                            <!-- here colors Guide -->
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div id="showAll"
+                            class=" col-md-3  mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center px-3  py-2   myshadow">
+                            All Words</div>
+                        <div id="printBtn"
+                            class=" col-md-2 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
+                            Print</div>
+                        <div id="storedWords"
+                            class=" col-md-3 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
+                            Stored Words</div>
+                    </div>
+                </div>
+            </div>
+            <div id="showAllOptions"
+                class="d-none mt-y mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow z-ind30">
+                Show Search Options</div>
+            <div id="optionsBox2" class="container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
+                <div class="row d-flex justify-content-center">
 
-                <input id="searchInput" placeholder="Search Here ..."
-                    class="col-7 mx-3 fs-4 fw-bold text-light rounded-3 ps-4 border-0" type="text">
-                <div id="filter"
-                    class=" col-2 myBtn1 rounded-3  text-center d-flex justify-content-center align-items-center  px-5 py-2 me-4  myshadow">
-                    <span class="text-light textShadow fw-semibold fs-5">Filter</span><i
-                        class="fa-solid fa-caret-down fs-3 text-light ps-2 "></i>
+                    <input id="searchInput" placeholder="Search Here ..."
+                        class="col-7 mx-3 fs-4 fw-bold text-light rounded-3 ps-4 border-0" type="text">
+                    <div id="filter"
+                        class=" col-2 myBtn1 rounded-3  text-center d-flex justify-content-center align-items-center  px-5 py-2 me-4  myshadow">
+                        <span class="text-light textShadow fw-semibold fs-5">Filter</span><i
+                            class="fa-solid fa-caret-down fs-3 text-light ps-2 "></i>
+                    </div>
+                </div>
+
+                <div id="userLektion" class="d-none border-top mt-4 row py-2 d-flex justify-content-center">
+                    <!-- Lek opt here -->
                 </div>
             </div>
 
-            <div id="userLektion" class="d-none border-top mt-4 row py-2 d-flex justify-content-center">
-                <!-- Lek opt here -->
-            </div>
-        </div>
-
-        <div id="theContent" class="mt-2 container d-block rounded-4 bg-light bg-opacity-75 z-ind20">
-            <table id="table" class="table  fs-5 fw-semibold">
-                <thead>
-                    <tr class="text-center">
-                        <th>Lek</th>
-                        <th>Wort</th>
-                        <th>Beispiel</th>
-                        <th>الكلمة</th>
-                        <th>المثال</th>
-                    </tr>
-                </thead>
-                <tbody id="tablebody">
-                    <!-- <tr class="bg-L2 ">
+            <div id="theContent" class="mt-2 py-2 container d-block rounded-4 bg-light bg-opacity-75 z-ind20">
+                <table id="table" class="table  fs-5 fw-semibold">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Lek</th>
+                            <th>Wort</th>
+                            <th>Beispiel</th>
+                            <th>الكلمة</th>
+                            <th>المثال</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody">
+                        <!-- <tr class="bg-L2 ">
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td class="breakp">@mdo</td>
                     </tr> -->
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
     <!--Toast Mes  -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">

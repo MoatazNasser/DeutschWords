@@ -1,180 +1,14 @@
 var optionsArr = ["Arabisch", "Deutsch", "Meine Wörter!!"];
-var lektionenArr = [
-  "Lek1",
-  "Lek2",
-  "Lek3",
-  "Lek4",
-  "Lek5",
-  "Lek6",
-  "Lek7",
-  "Lek8",
-  "Lek9",
-  "Lek10",
-  "Lek11",
-  "Lek12",
-];
-var lekSelectArr = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
-
+// prototype
+// var lektionenArr = ["Lek1","Lek2","Lek3","Lek4","Lek5","Lek6","Lek7","Lek8","Lek9","Lek10","Lek11","Lek12",];
+// var lekSelectArr = [false,false,false,false,false,false,false,false,false,false,false,false,];
+var lektionenArr = []; // restore leks names ex: lek1:lek12
+var lekSelectArr = []; // falses values = lek count // array helps on selecting leks by user
 var selectedLang = "";
 var selectedLektionen = []; // ex: 1 ,2 ex: 0 = Lek1 & 1 = Lek2
 var myWords = []; // array of localStorage
 var mainContainer = document.getElementById("mainContainer"); // main words container(main Div)
-var words = [
-  //Lek1
-  [
-    {
-      Lek: 1,
-      Du_word: "Der Hund",
-      Du_example: "Ich spiele mit meinem Hund",
-      Ar_word: "كلب",
-      Ar_example: "أنا العب مع الكلب",
-    },
-    {
-      Lek: 1,
-      Du_word: "Die Katze",
-      Du_example: "Ich spiele mit meiner Katze",
-      Ar_word: "قطة",
-      Ar_example: "أنا العب مع القطة",
-    },
-  ],
-  //Lek2
-  [
-    {
-      Lek: 2,
-      Du_word: "Der Garten",
-      Du_example: "Ich spiele in meinem Garten",
-      Ar_word: "حديقة",
-      Ar_example: "أنا العب فى الحديقة",
-    },
-    {
-      Lek: 2,
-      Du_word: "Die Tasche",
-      Du_example: "Ich habe eine Tasche eingekauft",
-      Ar_word: "حقيبة",
-      Ar_example: "أشتريت حقيبة",
-    },
-  ],
-  //Lek3
-  [
-    {
-      Lek: 3,
-      Du_word: "3 Der der",
-      Du_example: "Ich spiele in meinem Garten",
-      Ar_word: "حديقة",
-      Ar_example: "أنا العب فى الحديقة",
-    },
-    {
-      Lek: 3,
-      Du_word: "3 Die die",
-      Du_example: "Ich habe eine Tasche eingekauft",
-      Ar_word: "حقيبة",
-      Ar_example: "أشتريت حقيبة",
-    },
-  ],
-  //Lek4
-  [
-    {
-      Lek: 4,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek5
-  [
-    {
-      Lek: 5,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek6
-  [
-    {
-      Lek: 6,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek7
-  [
-    {
-      Lek: 7,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek8
-  [
-    {
-      Lek: 8,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek9
-  [
-    {
-      Lek: 9,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek10
-  [
-    {
-      Lek: 10,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek11
-  [
-    {
-      Lek: 11,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-  //Lek12
-  [
-    {
-      Lek: 12,
-      Du_word: "---",
-      Du_example: "---",
-      Ar_word: "---",
-      Ar_example: "---",
-    },
-  ],
-];
+var words = [];
 // console.log(words);
 var finalWordArr = []; // final array after merging lek. selected by user
 var cardsData = document.getElementById("cardsData"); // main container of cards
@@ -196,67 +30,153 @@ var submit = document.getElementById("submit");
 var rechoose = document.getElementById("rechoose");
 
 /////////////////////REtrive Data From Xlsx File//////////////////////////
+
+var checkLekCountandLekNum = false;
 //empty array will recive word objects
-var wordsFromXlsx = [[], [], [], [], [], [], [], [], [], [], [], []];
+var wordsFromXlsx = [];
 
 // will pass this array to function to write xlsx file
 // every word have 5 prop. as array not obj
 var WordsToWrite = [];
 
-async function readMyXlsxFile() {
-  let workbook = await XLSX.read(
-    await (
-      await fetch(
-        // `https://docs.google.com/spreadsheets/d/12FLuvucbOE7TVS5lo_IeVGa5MvOKK1Vr/edit?usp=share_link&ouid=108192674101708503775&rtpof=true&sd=true`
-        "words.xlsx"
-      )
-    ).arrayBuffer()
-  );
-  // console.log(workbook);
+// to ckeck previous files history
+var fileName = ""; // file name or Google sheet link
+var lekCount = -1; // count of Lek set by user
+var fileType = ""; // is it local file or google link
 
-  var num = Number(workbook.Sheets.Sheet1.A1.w) + 1; // row count
-  // num = Number(num) + 1;
-  // console.log("Row Count:", num); // row count
-  // console.log(workbook.Sheets.Sheet1); //
-  // console.log(workbook.Sheets.Sheet1.A2.h.slice(3)); //Lek number
-  // console.log(workbook.Sheets.Sheet1.B2.h); //Du word
-  // console.log(workbook.Sheets.Sheet1.C2.h); //Du example
-  // console.log(workbook.Sheets.Sheet1.D2.h); //Ar word
-  // console.log(workbook.Sheets.Sheet1.E2.h); //Ar example
-  setWordsArray(num, workbook);
-  fillEmptyLekArr();
-  convertWordObjToArrOfArr(wordsFromXlsx);
+//important function will set lek names ,array of falses values
+// array of empty arrays equal to count of leks
+// depends on lekCount seted by user
+
+function setArrays(lekCount) {
+  // we need number 1
+  for (let i = 1; i <= lekCount; i++) {
+    // set lektionenArr
+    let tempname = "Lek" + i;
+    lektionenArr.push(tempname);
+    // set lekSelectArr
+    let tempBool = false;
+    lekSelectArr.push(tempBool);
+    // set wordsFromXlsx
+    let tempArr = [];
+    wordsFromXlsx.push(tempArr);
+  }
+  //   console.log(lektionenArr);
+  //   console.log(lekSelectArr);
+  //   console.log(wordsFromXlsx);
+}
+async function readMyXlsxFile(fileName) {
+  let workbook = await XLSX.read(await (await fetch(fileName)).arrayBuffer());
+  // console.log(workbook);
+  if (fileType == "localFile") {
+    var num = Number(workbook.Sheets.Sheet1.A1.w) + 1; // row count
+    // num = Number(num) + 1;
+    // console.log("Row Count:", num); // row count
+    // console.log(workbook.Sheets.Sheet1); //
+    // console.log(workbook.Sheets.Sheet1.A2.h.slice(3)); //Lek number
+    // console.log(workbook.Sheets.Sheet1.B2.h); //Du word
+    // console.log(workbook.Sheets.Sheet1.C2.h); //Du example
+    // console.log(workbook.Sheets.Sheet1.D2.h); //Ar word
+    // console.log(workbook.Sheets.Sheet1.E2.h); //Ar example
+    setWordsArray(num, workbook);
+    if (checkLekCountandLekNum == false) {
+      fillEmptyLekArr();
+      convertWordObjToArrOfArr(wordsFromXlsx);
+    } else if (checkLekCountandLekNum == true) {
+      redirectToChangeLekNum();
+    }
+  } else if (fileType == "googleSheet") {
+    var num = Number(workbook.Sheets.Sheet1.B2.v) + 2; // row count
+    // num = Number(num) + 1;
+    // console.log("Row Count:", num); // row count
+    // console.log(workbook.Sheets.Sheet1); //
+    // console.log(workbook.Sheets.Sheet1.B3.v.slice(3)); //Lek number
+    // console.log(workbook.Sheets.Sheet1.C3.v); //Du word
+    // console.log(workbook.Sheets.Sheet1.D3.v); //Du example
+    // console.log(workbook.Sheets.Sheet1.E3.v); //Ar word
+    // console.log(workbook.Sheets.Sheet1.F3.v); //Ar example
+    setWordsArray(num, workbook);
+    if (checkLekCountandLekNum == false) {
+      fillEmptyLekArr();
+      convertWordObjToArrOfArr(wordsFromXlsx);
+    } else if (checkLekCountandLekNum == true) {
+      redirectToChangeLekNum();
+    }
+  }
 }
 
 function setWordsArray(numOfWords, workbook) {
-  for (var i = 2; i <= numOfWords; i++) {
-    var obj = {
-      Lek: 0,
-      Du_word: "",
-      Du_example: "",
-      Ar_word: "",
-      Ar_example: "",
-    };
+  if (fileType == "localFile") {
+    for (var i = 2; i <= numOfWords; i++) {
+      var obj = {
+        Lek: 0,
+        Du_word: "",
+        Du_example: "",
+        Ar_word: "",
+        Ar_example: "",
+      };
 
-    // get values from xlsx sheet
-    // eval fun to convert string to variable name
-    // in Js we can't add ${i} ina variable name directly to loop
-    var leknum = eval(`workbook.Sheets.Sheet1.A${i}.h.slice(3)`);
-    var DuWord = eval(`workbook.Sheets.Sheet1.B${i}.h`);
-    var DuExample = eval(`workbook.Sheets.Sheet1.C${i}.h`);
-    var ArWord = eval(`workbook.Sheets.Sheet1.D${i}.h`);
-    var ArExample = eval(`workbook.Sheets.Sheet1.E${i}.h`);
+      // get values from xlsx sheet
+      // eval fun to convert string to variable name
+      // in Js we can't add ${i} ina variable name directly to loop
+      var leknum = eval(`workbook.Sheets.Sheet1.A${i}.h.slice(3)`);
+      var DuWord = eval(`workbook.Sheets.Sheet1.B${i}.h`);
+      var DuExample = eval(`workbook.Sheets.Sheet1.C${i}.h`);
+      var ArWord = eval(`workbook.Sheets.Sheet1.D${i}.h`);
+      var ArExample = eval(`workbook.Sheets.Sheet1.E${i}.h`);
+      if (leknum > lekCount) {
+        console.log("yes");
+        checkLekCountandLekNum = true;
+        return;
+      }
+      // set values to object
+      obj.Lek = leknum;
+      obj.Du_word = DuWord;
+      obj.Du_example = DuExample;
+      obj.Ar_word = ArWord;
+      obj.Ar_example = ArExample;
 
-    // set values to object
-    obj.Lek = leknum;
-    obj.Du_word = DuWord;
-    obj.Du_example = DuExample;
-    obj.Ar_word = ArWord;
-    obj.Ar_example = ArExample;
+      // to push obj in right lek array
+      var lekArrIndex = leknum - 1; //lek array start from 0 not 1
+      wordsFromXlsx[lekArrIndex].push(obj);
+    }
+  } else if (fileType == "googleSheet") {
+    for (var i = 3; i <= numOfWords; i++) {
+      var obj = {
+        Lek: 0,
+        Du_word: "",
+        Du_example: "",
+        Ar_word: "",
+        Ar_example: "",
+      };
 
-    // to push obj in right lek array
-    var lekArrIndex = leknum - 1; //lek array start from 0 not 1
-    wordsFromXlsx[lekArrIndex].push(obj);
+      // get values from xlsx sheet
+      // eval fun to convert string to variable name
+      // in Js we can't add ${i} ina variable name directly to loop
+      var leknum = eval(`workbook.Sheets.Sheet1.B${i}.v.slice(3)`);
+      var DuWord = eval(`workbook.Sheets.Sheet1.C${i}.v`);
+      var DuExample = eval(`workbook.Sheets.Sheet1.D${i}.v`);
+      var ArWord = eval(`workbook.Sheets.Sheet1.E${i}.v`);
+      var ArExample = eval(`workbook.Sheets.Sheet1.F${i}.v`);
+      if (leknum > lekCount) {
+        console.log(leknum);
+        console.log(lekCount);
+        console.log("yes");
+
+        checkLekCountandLekNum = true;
+        return;
+      }
+      // set values to object
+      obj.Lek = leknum;
+      obj.Du_word = DuWord;
+      obj.Du_example = DuExample;
+      obj.Ar_word = ArWord;
+      obj.Ar_example = ArExample;
+
+      // to push obj in right lek array
+      var lekArrIndex = leknum - 1; //lek array start from 0 not 1
+      wordsFromXlsx[lekArrIndex].push(obj);
+    }
   }
 }
 // important fun to fill empty lek array to prevent undifined field
@@ -264,10 +184,10 @@ function fillEmptyLekArr() {
   for (var i = 0; i < wordsFromXlsx.length; i++) {
     var obj = {
       Lek: 0,
-      Du_word: "",
-      Du_example: "",
-      Ar_word: "",
-      Ar_example: "",
+      Du_word: "Empty",
+      Du_example: "Empty",
+      Ar_word: "Empty",
+      Ar_example: "Empty",
     };
     var leknum = i + 1;
     if (wordsFromXlsx[i].length == 0) {
@@ -304,6 +224,15 @@ function convertWordObjToArrOfArr(words) {
   }
   // console.log(WordsToWrite);
 }
+
+function redirectToChangeLekNum() {
+  var redirect1 = document.getElementById("redirect1");
+  redirect1.classList.remove("d-none");
+  userOptions.classList.add("d-none");
+  setTimeout(() => {
+    window.location.href = "setFile.html";
+  }, 8000);
+}
 ///////////////////////////////////////
 
 // start From Here
@@ -311,10 +240,30 @@ function convertWordObjToArrOfArr(words) {
 if (JSON.parse(localStorage.getItem("myWords")) != null) {
   myWords = JSON.parse(localStorage.getItem("myWords"));
 }
-
+// to ckeck previous files history
+function defineFileStatus() {
+  var redirect = document.getElementById("redirect");
+  if (
+    localStorage.getItem("fileSource") == null &&
+    localStorage.getItem("lekCount") == null &&
+    localStorage.getItem("sourceType") == null
+  ) {
+    redirect.classList.remove("d-none");
+    userOptions.classList.add("d-none");
+    setTimeout(() => {
+      window.location.href = "setFile.html";
+    }, 5000);
+  } else {
+    fileName = localStorage.getItem("fileSource");
+    lekCount = Number(localStorage.getItem("lekCount"));
+    fileType = localStorage.getItem("sourceType");
+  }
+}
 startFromHere();
 async function startFromHere() {
-  await readMyXlsxFile();
+  await defineFileStatus();
+  await setArrays(lekCount);
+  await readMyXlsxFile(fileName);
   words = await wordsFromXlsx;
   await showOptions();
   await applyClickToOptions();
@@ -322,9 +271,9 @@ async function startFromHere() {
   await applyClickToLektion();
   showColorGuide();
 }
-// End Here
+// // End Here
 
-// show options Btns
+// // show options Btns
 function showOptions() {
   var userOpt = "";
   for (var i = 0; i < optionsArr.length; i++) {
@@ -332,7 +281,7 @@ function showOptions() {
         <div
         class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
         <div onclick="selectedBtnOption(${i})" class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
-        <span class='textShadow text-light'>${optionsArr[i]}</span> 
+        <span class='textShadow text-light'>${optionsArr[i]}</span>
     </div>
       `;
   }
@@ -342,8 +291,8 @@ function showOptions() {
   `;
 }
 
-// on click set language + go to choose lektionen
-// or go to my words
+// // on click set language + go to choose lektionen
+// // or go to my words
 
 function applyClickToOptions() {
   for (var i = 0; i < langChoose.length; i++) {
@@ -383,7 +332,7 @@ ${userLekData}
 `;
 }
 
-// changing Btn style + add lek name to array
+// // changing Btn style + add lek name to array
 function applyClickToLektion() {
   for (var i = 0; i < lekData.length; i++) {
     lekData[i].addEventListener("click", function (e) {
@@ -416,7 +365,7 @@ function applyClickToLektion() {
     });
   }
 }
-// function to show colors of lektionen above final results
+// // function to show colors of lektionen above final results
 function showColorGuide() {
   var temp = "";
   for (var i = 1; i <= lektionenArr.length; i++) {
@@ -430,17 +379,17 @@ function showColorGuide() {
   }
   lekColorDiv.innerHTML = temp;
 }
-// get index of Btn and assign it to global variable (Lektion)
+// // get index of Btn and assign it to global variable (Lektion)
 function selectedBtnLek(btnNum) {
   BtnIndex = btnNum;
   //   console.log(btnNum);
 }
-// get index of Btn and assign it to global variable (Sprache)
+// // get index of Btn and assign it to global variable (Sprache)
 function selectedBtnOption(btnNum) {
   BtnIndex = btnNum;
   //   console.log(btnNum);
 }
-// back Btn function
+// // back Btn function
 back.addEventListener("click", function () {
   selectedLektionen = [];
   selectedLang = "";
@@ -458,7 +407,7 @@ back.addEventListener("click", function () {
   }
 });
 
-// Edit final list of lek to equal index inside Arr of words
+// // Edit final list of lek to equal index inside Arr of words
 function getFinalIndexOfLek() {
   for (var i = 0; i < selectedLektionen.length; i++) {
     selectedLektionen[i] = selectedLektionen[i].slice(3) - 1;
@@ -471,7 +420,7 @@ function getFinalIndexOfLek() {
   // console.log(selectedLektionen);
 }
 
-// click submit function /showing selected Lek then call fun to show words
+// // click submit function /showing selected Lek then call fun to show words
 var listLek = document.getElementById("listLek");
 var lekColo = document.getElementById("lekColo");
 submit.addEventListener("click", async function () {
@@ -508,7 +457,7 @@ submit.addEventListener("click", async function () {
   setDatatoCards(); /////////// show data
 });
 
-// choose Btn fun
+// // choose Btn fun
 rechoose.addEventListener("click", function () {
   selectedLektionen = [];
   finalWordArr = [];
@@ -530,7 +479,7 @@ rechoose.addEventListener("click", function () {
   mainContainer.classList.toggle("d-none");
 });
 
-// card flip test
+// // card flip test
 var backface = document.getElementsByClassName("backface");
 function setCardsize() {
   var backface = document.getElementsByClassName("backFace");
@@ -543,7 +492,7 @@ function setCardsize() {
   }
 }
 
-// to change card size to fit in any new window size
+// // to change card size to fit in any new window size
 window.addEventListener("resize", function () {
   for (var i = 0; i < backface.length; i++) {
     var backfaceHeight = backface[i].offsetHeight + 20;
@@ -571,7 +520,7 @@ function setFlipFuncToCard() {
   }
 }
 
-// function to combine words in user's final lekArr
+// // function to combine words in user's final lekArr
 function combineNewArrofWords() {
   // console.log(selectedLektionen);///////////////////////
   for (var i = 0; i < selectedLektionen.length; i++) {
@@ -581,7 +530,7 @@ function combineNewArrofWords() {
   // console.log(finalWordArr); /////////////////////////
 }
 
-// show final results on cards
+// // show final results on cards
 function setDatatoCards() {
   if (selectedLang == "Deutsch") {
     // console.log("Deutsch"); ////////////////////////////
@@ -594,7 +543,7 @@ function setDatatoCards() {
     // console.log("Meine Wörter!!"); /////////////////////////
   }
 }
-// operations and functions to show myWords in correct lang.
+// // operations and functions to show myWords in correct lang.
 var myWordsCardlang = "";
 var myWordsLang = document.getElementById("myWordsLang");
 var backToStartFirst = document.getElementById("backToStartFirst");
@@ -626,10 +575,10 @@ backToStartSecond.addEventListener("click", function () {
   backToStartSecond.classList.toggle("d-none"); // hide Btn to back
   cardsData.innerHTML = ``;
 });
-// write Deutsch cards
-//inline style pointer-event to cancel preventEvent class/ this code added because
-// i tried to click on backface and the click active then the text mirrored
-// so i prevent events on card backface but allow the button to add to storage
+// // write Deutsch cards
+// //inline style pointer-event to cancel preventEvent class/ this code added because
+// // i tried to click on backface and the click active then the text mirrored
+// // so i prevent events on card backface but allow the button to add to storage
 function showDeutchCard() {
   var temp = "";
   for (var i = 0; i < finalWordArr.length; i++) {
@@ -650,10 +599,10 @@ function showDeutchCard() {
                     ${finalWordArr[i][j].Du_example}</div>
             </div>
 
-            <div 
+            <div
                 class="backFace preventEvent position-absolute w-100 p-2 bg-success bg-opacity-75 rounded-4 d-flex align-items-center flex-column">
                 <div class="position-absolute preventEvent top-0 start-0 w-100 h-100 rounded-4 z-ind10"></div>
-                
+
                 <div class="fs-4 fw-bold text-center w-100 onlyShadowWhite">المعنى</div>
                 <div
                     class="fs-4 py-2 textShadow text-light fw-semibold w-100 text-center border-bottom border-light text-break">
@@ -673,7 +622,7 @@ function showDeutchCard() {
   cardsData.innerHTML = temp;
 }
 
-// write Arabisch cards
+// // write Arabisch cards
 
 function showArabicCard() {
   var temp = "";
@@ -695,7 +644,7 @@ function showArabicCard() {
                   ${finalWordArr[i][j].Ar_example}</div>
           </div>
 
-          <div 
+          <div
               class="backFace preventEvent position-absolute w-100 p-2 bg-success bg-opacity-75 rounded-4 d-flex align-items-center flex-column">
               <div class="fs-4 fw-bold text-center w-100 onlyShadowWhite">Das Wort</div>
               <div
@@ -735,11 +684,11 @@ function showMyWordsCard(lang) {
                       class="fs-4 py-2 textShadow text-light fw-semibold text-center w-100 border-bottom border-light wrap">
                       ${myWords[i].Ar_example}</div>
               </div>
-  
-              <div 
+
+              <div
                   class="backFace preventEvent position-absolute w-100 p-2 bg-success bg-opacity-75 rounded-4 d-flex align-items-center flex-column">
                   <div class="position-absolute preventEvent top-0 start-0 w-100 h-100 rounded-4 z-ind10"></div>
-                  
+
                   <div class="fs-4 fw-bold text-center w-100 onlyShadowWhite">Das Wort</div>
                   <div
                       class="fs-4 py-2 textShadow text-light fw-semibold w-100 text-center border-bottom border-light text-break">
@@ -772,10 +721,10 @@ function showMyWordsCard(lang) {
                     ${myWords[i].Du_example}</div>
             </div>
 
-            <div 
+            <div
                 class="backFace preventEvent position-absolute w-100 p-2 bg-success bg-opacity-75 rounded-4 d-flex align-items-center flex-column">
                 <div class="position-absolute preventEvent top-0 start-0 w-100 h-100 rounded-4 z-ind10"></div>
-                
+
                 <div class="fs-4 fw-bold text-center w-100 onlyShadowWhite">المعنى</div>
                 <div
                     class="fs-4 py-2 textShadow text-light fw-semibold w-100 text-center border-bottom border-light text-break">
@@ -807,6 +756,13 @@ async function arabicSequence() {
 }
 
 async function setWordToMyWords(f, s) {
+  if (
+    finalWordArr[f][s].Du_word == "Empty" &&
+    finalWordArr[f][s].Ar_word == "Empty"
+  ) {
+    // console.log("empty");
+    return;
+  }
   for (var i = 0; i < myWords.length; i++) {
     if (myWords[i].Du_word == finalWordArr[f][s].Du_word) {
       // console.log(myWords[i].Du_word);
@@ -815,7 +771,7 @@ async function setWordToMyWords(f, s) {
         // console.log(myWords[i].Ar_word);
         // console.log(finalWordArr[f][s].Ar_word);
         if (myWords[i].Lek == finalWordArr[f][s].Lek) {
-          console.log("Added before");
+          // console.log("Added before");
           // to make the user know the word has been added before
           var toast3 = document.getElementById("liveToast3");
           toast3.classList.add("toastE");
@@ -830,7 +786,7 @@ async function setWordToMyWords(f, s) {
   }
   myWords.push(finalWordArr[f][s]);
   localStorage.setItem("myWords", JSON.stringify(myWords));
-  console.log("Added");
+  // console.log("Added");
 
   // to make the user know the word has been added
   var toast1 = document.getElementById("liveToast1");
