@@ -43,7 +43,6 @@
 }
 .box {
   -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
           transform-style: preserve-3d;
   /* pointer-events: none; */
   -webkit-transition: all 1s;
