@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav id="navbar"
+        class=" navbar position-fixed top-0 start-0 container-fluid navbar-expand-lg bg-black bg-opacity-100 z-ind50">
+        <div class="container">
+            <a class="fs-4 fw-bold text-light navbar-brand textShadow ps-4" href="index.html">Deutsch-Wort </a>
+            <button class="navbar-toggler dd" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class=""><i class="fa-solid fa-bars fs-4 text-light"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="search.html">Search</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="download.html">Download Excel File</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="setFile.html">Set Excel File</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="py-5 pageContainer d-flex flex-column position-relative container-fluid ">
+
+        <div class="bgPicCont w-100 h-100  position-absolute"></div>
+        <div class="bgPicBlack w-100 h-100  position-absolute"></div>
+        <!-- <button  class="btn btn-danger z-ind30">dfsfs</button> -->
+        <div id="redirectContainer" class="d-none py-5 container-fluid px-4 z-ind5">
+            <div class=" container bg-danger bg-opacity-50 rounded-4 mb-4">
+                <div id="redirect" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have to select file first.
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in 5
+                            Seconds</h3>
+                    </div>
+                </div>
+                <div id="redirect1" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">You have entered a number of
+                            Lektionen less than the largest number of lektion in your File
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-3 textShadow text-light">Ex: you have entered 15 lek
+                            but the gretest num is 20 (lek20) in your file
+                        </h3>
+                        <h3 class="text-center fw-bold col-12 py-1 textShadow text-light">Redirect to Set File Page in
+                            10
+                            Seconds</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="SearchPageContainer" class="container-fluid z-ind30">
+            <div id="fullScreenBtn" class="hideBtn position-fixed text-center ">Full Screen</div>
+            <div id="optionsBox1" class="mt-5 container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
+                <div class="row  d-flex justify-content-center">
+                    <div id="lekColo" class=" container pt-3">
+                        <div id="lekColorDiv" class=" row d-flex justify-content-center pb-3 border-bottom">
+                            <!-- here colors Guide -->
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div id="showAll"
+                            class=" col-md-3  mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center px-3  py-2   myshadow">
+                            All Words</div>
+                        <div id="printBtn"
+                            class=" col-md-2 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
+                            Print</div>
+                        <div id="storedWords"
+                            class=" col-md-3 mt-2 mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow">
+                            Stored Words</div>
+                    </div>
+                </div>
+            </div>
+            <div id="showAllOptions"
+                class="d-none mt-y mx-3 myBtn1 rounded-3 text-light textShadow fw-semibold fs-5 text-center d-flex justify-content-center align-items-center  px-3 py-2   myshadow z-ind30">
+                Show Search Options</div>
+            <div id="optionsBox2" class="container rounded-4 bg-light bg-opacity-75 z-ind20 py-3 my-2">
+                <div class="row d-flex justify-content-center">
+
+                    <input id="searchInput" placeholder="Search Here ..."
+                        class="col-md-7 col-10 mx-3 fs-4 fw-bold text-light rounded-3 ps-4 border-0 my-2" type="text">
+                    <div id="filter"
+                        class=" col-2 myBtn1 rounded-3  text-center d-flex justify-content-center align-items-center  px-5 py-2 me-4  myshadow">
+                        <span class="text-light textShadow fw-semibold fs-5 ">Filter</span><i
+                            class="fa-solid fa-caret-down fs-3 text-light ps-2 "></i>
+                    </div>
+                </div>
+
+                <div id="userLektion" class="d-none border-top mt-4 row py-2 d-flex justify-content-center">
+                    <!-- Lek opt here -->
+                </div>
+            </div>
+
+            <div id="theContent"
+                class="overflow-auto mt-2 py-2 container d-block rounded-4 bg-light bg-opacity-75 z-ind20">
+                <table id="table" class="table  fs-5 fw-semibold">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Lek</th>
+                            <th>Wort</th>
+                            <th>Beispiel</th>
+                            <th>الكلمة</th>
+                            <th>المثال</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody" class="">
+                        <!-- <tr class="bg-L2 ">
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td class="breakp">@mdo</td>
+                    </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Toast Mes  -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast2" class="toast ">
+            <div class="toast-header">
+                <img style="width: 30px;" src="images/true.png" class="rounded me-2" alt="...">
+                <strong class="me-auto">Notification</strong>
+                <small>Just Now!!</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Selected Word Removed Successfully!
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/jquery-3.6.2.min.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+</html>

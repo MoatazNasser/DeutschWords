@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar position-fixed top-0 start-0 container-fluid navbar-expand-lg bg-black bg-opacity-100 z-ind50">
+        <div class="container">
+            <a class="fs-4 fw-bold text-light navbar-brand textShadow ps-4" href="index.html">Deutsch-Wort </a>
+            <button class="navbar-toggler dd" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class=""><i class="fa-solid fa-bars fs-2 text-light"></i></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="search.html">Search</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="download.html">Download Excel File</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link px-3 textShadow active text-light text-center rounded-3 fs-5 fw-semibold"
+                            aria-current="page" href="setFile.html">Set Excel File</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="pageContainer position-relative container-fluid mt-5">
+
+        <div class="bgPicCont w-100 h-100  position-absolute"></div>
+        <div class="bgPicBlack w-100 h-100  position-absolute"></div>
+        <!-- <button  class="btn btn-danger z-ind30">dfsfs</button> -->
+
+        <div class="py-5 container-fluid px-4 z-ind5">
+            <div class="container bg-danger bg-opacity-50 rounded-4 mb-4">
+
+                <div id="redirect" class="d-none row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h2 class="text-center fw-bold col-12 py-3 textShadow text-light"> Redirect to main App in 3
+                            seconds!!
+                        </h2>
+                    </div>
+                </div>
+                <div id="selectLekCount" class=" row py-2 d-flex justify-content-center">
+                    <div class="px-5 d-flex justify-content-center flex-column align-items-center">
+                        <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">How many Lektions do you
+                            want?
+                        </h2>
+                        <input id="inputLekCount"
+                            placeholder=" Count of Leks = Count of Leks inside your file or upto 30..."
+                            class="w-100 fs-4 fw-bold text-light rounded-3 py-1 ps-4 border-0  " type="text">
+                        <h4 class="text-center fw-bold col-12 py-3 textShadow text-light"> **Ex: If the largest number
+                            in the lektion name is 15 (Ex:Lek15), then you must enter the number 15 or more upto 30 in
+                            the field above,
+                            otherwise the application will not read the data from the file.
+                        </h4>
+                        <div class="w-100">
+                            <div id="alert1"
+                                class="d-none w-100 text-danger alert alert-info  fs-5 fw-bold py-2 text-start mt-2">
+                                ** Select from 12 to 30...
+                            </div>
+                        </div>
+                        <div
+                            class="  position-relative px-3 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                            <div id="selectLekCountSubmit"
+                                class=" w-100 h-100 rounded-3 position-absolute top-0 start-0">
+                            </div>
+                            <span class='textShadow    text-light'>Submit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="setFileSourceOptions" class="d-none row py-2 d-flex justify-content-center">
+                    <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">Read file From:
+                    </h2>
+
+                    <div
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div id="uploadFile" class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Upload File</span>
+                    </div>
+
+                    <!-- <div
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div id="googleSheet" class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Google Sheet</span>
+                    </div> -->
+
+                    <div
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div id="localFile" class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Local File</span>
+                    </div>
+
+                    <div id="setFileSourceOptionsBack"
+                        class=" position-relative col-md-6 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Back</span>
+                    </div>
+                </div>
+
+                <div id="uploadLocalFile" class="d-none row py-2 d-flex justify-content-center">
+                    <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">Upload Local .xlsx file :
+                    </h2>
+
+                    <div class="w-75">
+                        <input id="inputFile" class="w-100 mb-4 fs-5 fw-bold rounded-3 text-light" accept=".xlsx"
+                            type="file" placeholder="Excel File only(.xlsx File) ">
+                    </div>
+                    <div class="w-75">
+                        <div id="alert2"
+                            class="d-none w-100 text-danger alert alert-info  fs-5 fw-bold py-2 text-start mt-1">
+                            ** Choose xlsx File Please ...
+                        </div>
+                    </div>
+
+                    <div id="uploadLocalFileSubmit"
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Submit</span>
+                    </div>
+                    <div id="uploadLocalFileBack"
+                        class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Back</span>
+                    </div>
+                </div>
+
+
+                <!-- <div id="selectGoogleFile" class="d-none row py-2 d-flex justify-content-center">
+                    <h2 class="text-center fw-bold col-12 py-3 textShadow text-light">Insert Complete Google Sheet Link
+                        :
+                    </h2>
+
+                    <div class="w-75">
+                        <input id="inputLink" class="w-100 mb-4 fs-4 fw-bold text-light rounded-3 ps-4 border-0"
+                            value="" type="text" placeholder="Ex: https://docs.google.com/spreadsheets/d/12FLuvu... ">
+                    </div>
+                    <div class="w-75">
+                        <div id="alert3"
+                            class="d-none w-100 text-danger alert alert-info  fs-5 fw-bold py-2 text-start mt-1">
+                            ** File Not found or Wrong Google Sheet link ...
+                        </div>
+                    </div>
+
+                    <div id="selectGoogleFileSubmit"
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Submit</span>
+                    </div>
+                    <div id="selectGoogleFileBack"
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Back</span>
+                    </div>
+                </div> -->
+
+                <div id="setMyLocalFile" class="d-none row py-2 d-flex justify-content-center">
+                    <h4 class="text-center fw-bold col-12 py-3 textShadow text-light">1-Use it only if you have uploaded
+                        the file to a server or Github.
+                    </h4>
+                    <h4 class="text-center fw-bold col-12 py-3 textShadow text-light">2-Rename Excel file to
+                        (words.xlsx)
+                        then put it in the same Folder
+                    </h4>
+
+                    <div id="setMyLocalFileSubmit"
+                        class=" position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Submit</span>
+                    </div>
+                    <div id="setMyLocalFileBack"
+                        class="opt position-relative col-md-3 col-6 myBtn1 rounded-3 fw-semibold fs-5 d-flex justify-content-center align-items-center py-2 mx-2 mb-4 myshadow">
+                        <div class=" w-100 h-100 rounded-3 position-absolute top-0 start-0"></div>
+                        <span class='textShadow text-light'>Back</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="js/read-excel-file.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/jquery-3.6.2.min.js"></script>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="js/setFile.js"></script>
+</body>
+
+</html>
