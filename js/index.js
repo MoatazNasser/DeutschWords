@@ -37,6 +37,8 @@ var back = document.getElementById("back");
 var submit = document.getElementById("submit");
 var rechoose = document.getElementById("rechoose");
 
+// array will recive data when random clicked
+var newRandomArr =[];
 /////////////////////REtrive Data From Xlsx File//////////////////////////
 
 var checkLekCountandLekNum = false;
@@ -594,6 +596,7 @@ submit.addEventListener("click", async function () {
   // prepare options div
   if(selectedLektionen.length != 0)
   {
+    newRandomArr =[];
     random.classList.remove("d-none");
   }
   
@@ -629,6 +632,7 @@ submit.addEventListener("click", async function () {
 
 // // choose Btn fun
 rechoose.addEventListener("click", function () {
+  newRandomArr =[];
   selectedLektionen = [];
   finalWordArr = [];
   cardsData.innerHTML = ""; // empty cards container
@@ -765,6 +769,7 @@ backToStartFirst.addEventListener("click", function () {
 });
 
 backToStartSecond.addEventListener("click", function () {
+  newRandomArr =[];//empty random array
   random.classList.add("d-none");//hide rondom
   mainContainer.classList.toggle("d-none"); // hide cards container
   lekColo.classList.toggle("d-none"); // hide cards container
@@ -773,10 +778,11 @@ backToStartSecond.addEventListener("click", function () {
   cardsData.innerHTML = ``;
 });
 
-var newRandomArr =[];
+
 random.addEventListener("click",async()=>{
 if(selectedLang=="Arabisch" || selectedLang=="Deutsch"){
   // console.log("Ar or Du");
+      newRandomArr =[];
       if(selectedLang=="Arabisch"){
         
         for(var i= 0 ; i<finalWordArr.length ; i++)
@@ -794,6 +800,7 @@ if(selectedLang=="Arabisch" || selectedLang=="Deutsch"){
 
       }
       else if(selectedLang=="Deutsch"){
+          newRandomArr =[];
           for(var i= 0 ; i<finalWordArr.length ; i++)
           {
             for(var j = 0 ; j<finalWordArr[i].length ; j++)
@@ -813,6 +820,7 @@ if(selectedLang=="Arabisch" || selectedLang=="Deutsch"){
 }
 else if(selectedLang=="Meine Wörter!!"){
   // console.log("Meine Wörter!!");
+           newRandomArr =[];
            newRandomArr =[...myWords];
           // console.log(myWords);
           // console.log(newRandomArr);
